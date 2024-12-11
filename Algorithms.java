@@ -34,11 +34,15 @@ public class Algorithms {
         int current = 0;
         while (s.hasNext()) {
             int l = s.nextLine().length();
-            if (l == current)
-                longest++;
-            if (l > current)
-                current = l;
-                longest = 1;
+            if (l >= current) {
+                if (l == current) {
+                    longest++;
+                } else {
+                    current = l;
+                    longest = 1;
+                }
+            }
+                
         }
         return longest;
     }
@@ -47,13 +51,13 @@ public class Algorithms {
         s = new Scanner(f);
         int palindrome = 0;
         while (s.hasNext()) {
-            int p = s.nextLine().length();
-            String a = s.nextLine();
+            String word = s.nextLine();
+            int p = word.length();
             String c = "";
             for (int b = 0; b < p; b++) {
-                c = a.substring(b, b + 1) + c;
+                c = word.substring(b, b + 1) + c;
             }
-            if (a.equals(c)){
+            if (word.equals(c)){
                 palindrome++;
             }
         }
